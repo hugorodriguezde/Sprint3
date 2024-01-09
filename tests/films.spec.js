@@ -293,9 +293,31 @@ describe('Function "orderByYear"', () => {
 // Exercise 6
 // YOUR CODE HERE. Test moviesAverageByCategory()
 describe('Function "moviesAverageByCategory"', () => {
-  it('ADD YOUR CODE IN films.spec.js file', () => {
-    expect(typeof hoursToMinutes).toBe('coffee');
+  it('should be a function', () => {
+    expect(typeof moviesAverageByCategory).toBe('function');
   });
+  it('should return a number', () => {
+    expect(typeof moviesAverageByCategory(movies, 'Crime')).toBe('number');
+  });
+  it('Should not return anything that is not a number', () => {
+    expect(moviesAverageByCategory(movies, 'Crime')).not.toBeNaN();
+  });
+  it('Average  expected to be a number with two decimals', () => {
+    expect(moviesAverageByCategory([
+      {genre: ['Drama'], score: 9.5},
+      {genre: ['Crime'], score: 7.5},
+      {genre: ['Crime'], score: 7.4},
+      {genre: ['Crime'], score: 6.2},
+    ], 'Crime')).toBe(7.03)
+  })
+  it('If category do not have movies in it should return 0', () => {
+    expect(moviesAverageByCategory ([
+      {genre: ['Drama'], score: 9.5},
+      {genre: ['Crime'], score: 7.5},
+      {genre: ['Crime'], score: 7.4},
+      {genre: ['Crime'], score: 6.2},
+    ], 'Fantasy')).toBe(0);
+  })
 });
 
 // Exercise 7
